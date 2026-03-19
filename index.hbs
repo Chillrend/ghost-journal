@@ -36,11 +36,11 @@
                 <div class="gh-feed">
                     {{^is "paged"}}
                         {{#foreach posts from="2"}}
-                            {{> loop}}
+                            {{> post-card}}
                         {{/foreach}}
                     {{else}}
                         {{#foreach posts}}
-                            {{> loop}}
+                            {{> post-card}}
                         {{/foreach}}
                     {{/is}}
                 </div>
@@ -101,7 +101,7 @@
 
                             <div class="gh-featured gh-feed">
                                 {{#foreach featured}}
-                                    {{> loop}}
+                                    {{> post-card}}
                                 {{/foreach}}
                             </div>
                         </section>

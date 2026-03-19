@@ -1,0 +1,136 @@
+{{!< default}}
+
+{{#contentFor "scripts"}}
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const delay = ms => new Promise(res => setTimeout(res, ms));
+
+        const animate = async () => {
+            const allSpan = document.getElementById('all');
+            const codesSpan = document.getElementById('codes');
+
+            await delay(1000);
+            allSpan.classList.add('is-struck');
+
+            await delay(800);
+            let beautiful = document.createElement("span");
+            beautiful.innerText = "scalable";
+            beautiful.id = "beautiful";
+            beautiful.className = "anim-word anim-highlight";
+            allSpan.insertAdjacentElement('afterend', beautiful);
+
+            void beautiful.offsetWidth; // Trigger reflow
+            beautiful.classList.add('is-visible');
+
+            await delay(1800);
+            beautiful.classList.add('is-struck', 'anim-fade');
+            beautiful.classList.remove('anim-highlight');
+
+            await delay(800);
+            let ok = document.createElement('span');
+            ok.innerText = ", mostly.";
+            ok.id = "ok";
+            ok.className = "anim-word";
+            codesSpan.insertAdjacentElement('afterend', ok);
+
+            void ok.offsetWidth; // Trigger reflow
+            ok.classList.add('is-visible');
+        };
+
+        animate();
+    });
+</script>
+{{/contentFor}}
+
+<main id="gh-main" class="gh-main gh-canvas">
+    <article class="gh-article">
+
+        <header class="gh-article-header gh-canvas">
+            <h1 class="gh-article-title is-title">Hi, I'm an engineer.</h1>
+            <div class="gh-article-title is-title home-animated-heading">
+                I write <span id="all" class="home-strike-target">efficient</span> <span id="codes">codes</span>
+            </div>
+
+            <div class="gh-content home-hero-content">
+                <p>I architect infrastructure, deploy reliable systems, and keep networks secure. From bare-metal virtualization to automated monitoring, I build the foundation that applications run on.</p>
+                <p><a href="mailto:madjavacoder@gmail.com">Let's have a chat &rarr;</a></p>
+            </div>
+        </header>
+
+        <div class="gh-content gh-canvas">
+
+            <hr>
+            <h2>The Stack</h2>
+            <p>Software is only as good as the infrastructure it runs on. Here is the toolbelt I use to ensure high availability, visibility, and security across the network.</p>
+
+            <div class="home-grid">
+                <div class="home-grid-item">
+                    <h3>Virtualization & Containers</h3>
+                    <p>Managing bare-metal hypervisors and containerized workloads for efficient resource allocation.</p>
+                    <p><strong>Proxmox &middot; ESXi &middot; Docker &middot; Linux</strong></p>
+                </div>
+                <div class="home-grid-item">
+                    <h3>Networking & Infrastructure</h3>
+                    <p>Routing, bandwidth management, and maintaining a Single Source of Truth for topologies.</p>
+                    <p><strong>MikroTik &middot; NetBox &middot; RADIUS</strong></p>
+                </div>
+                <div class="home-grid-item">
+                    <h3>Observability & Storage</h3>
+                    <p>Keeping a pulse on system health and managing distributed or high-throughput storage systems.</p>
+                    <p><strong>Grafana &middot; Prometheus &middot; SeaweedFS &middot; Frigate</strong></p>
+                </div>
+                <div class="home-grid-item">
+                    <h3>Automation & Security</h3>
+                    <p>Writing internal tools to automate incident response workflows and securing endpoints.</p>
+                    <p><strong>CSIRT Operations &middot; Node.js &middot; Next.js</strong></p>
+                </div>
+            </div>
+
+            <hr>
+            <h2>In The Trenches</h2>
+
+            <div class="home-projects">
+                <div class="home-project-card">
+                    <h3>The Homelab & Self-Hosted Infrastructure</h3>
+                    <p>My bare-metal R&D proving ground, running Proxmox on OptiPlex hardware. It serves as the secure backbone for my remote engineering workflow, anchoring a persistent Node.js and PostgreSQL development environment via VPN tunnels.</p>
+                    <p style="margin-top: 0.8rem;">Utilizing Nginx Proxy Manager for edge routing, the cluster hosts production-grade home services, including AI-accelerated CCTV (Frigate/Coral TPU), Vaultwarden, and complete home automation.</p>
+                </div>
+                <div class="home-project-card">
+                    <h3>High-Concurrency LMS Deployment</h3>
+                    <p>Architected and deployed a highly optimized Moodle instance designed to handle concurrent testing loads for 3,500 users. Required fine-tuning virtualization resources on Proxmox and strict database optimization to ensure zero downtime during critical examination windows.</p>
+                </div>
+                <div class="home-project-card">
+                    <h3>Network Authentication Migration</h3>
+                    <p>Led the migration of an organizational internet login system to a centralized RADIUS infrastructure. Implemented PCQ on MikroTik routers to enforce strict, fair bandwidth management across the network, drastically reducing network congestion complaints.</p>
+                </div>
+                <div class="home-project-card">
+                    <h3>Infrastructure SSOT Implementation</h3>
+                    <p>Spearheaded the deployment and population of a NetBox instance to serve as the Single Source of Truth for all network and IPAM documentation. Transitioned the team away from fragmented spreadsheets to a structured, API-accessible database for infrastructure tracking.</p>
+                </div>
+                <div class="home-project-card">
+                    <h3>CSIRT Incident Automation Tooling</h3>
+                    <p>In response to a large-scale phishing incident, developed a semi-automated password reset and ticketing pipeline using Node.js. This tooling allowed the support team to process the massive influx of compromised accounts rapidly while maintaining strict access controls.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="gh-content gh-canvas">
+            <hr>
+            <h2 class="latest-posts-title">Latest Posts</h2>
+        </div>
+
+        <div class="gh-feed gh-canvas">
+            {{#get "posts" limit="3" as |latest|}}
+                {{#foreach latest}}
+                    {{> "post-card"}}
+                {{/foreach}}
+            {{/get}}
+        </div>
+
+        <div class="gh-content gh-canvas" style="margin-top: 2rem;">
+            <a href="/blog" class="gh-link">All posts &rarr;</a>
+        </div>
+
+    </article>
+</main>

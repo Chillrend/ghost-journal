@@ -1,0 +1,141 @@
+/* Custom Homepage Styles */
+
+/* Hero Section */
+.home-animated-heading {
+    min-height: 1.2em;
+    margin-bottom: 1rem;
+    font-size: 3.2rem;
+    font-weight: 600;
+    line-height: 1;
+}
+
+.home-hero-content {
+    font-size: 1.25rem;
+    max-width: 720px;
+    line-height: 1.6;
+    margin-bottom: 4rem;
+}
+
+.home-hero-content a {
+    color: var(--ghost-accent-color);
+    font-weight: 600;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.home-hero-content a:hover {
+    opacity: 0.8;
+}
+
+/* Section Titles */
+.gh-article h2 {
+    font-size: 2.2rem;
+    margin-top: 4rem;
+    margin-bottom: 1.5rem;
+}
+
+/* The Stack Section */
+.home-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
+    margin-top: 2rem;
+}
+
+.home-grid-item {
+    background: rgba(var(--ghost-accent-color-rgb), 0.04);
+    padding: 1.8rem;
+    border-radius: 8px;
+}
+
+.home-grid-item h3 {
+    font-size: 1.4rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: var(--ghost-accent-color);
+}
+
+.home-grid-item p {
+    margin-bottom: 1rem;
+}
+
+.home-grid-item p:last-child {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin-bottom: 0;
+}
+
+/* In The Trenches Section */
+.home-projects {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.home-project-card {
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--ghost-border-color);
+}
+
+.home-project-card:first-of-type {
+    padding-top: 1rem;
+}
+
+.home-project-card:last-of-type {
+    border-bottom: none;
+}
+
+.home-project-card h3 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-size: 2.6rem;
+    font-weight: 600;
+    word-break: break-word;
+}
+
+.home-project-card p {
+    margin: 0;
+    font-size: 1.4rem;
+    line-height: 1.5;
+    letter-spacing: -0.01em;
+    word-break: break-word;
+}
+
+/* Latest Posts Section */
+.latest-posts-title {
+    margin-top: 4rem;
+}
+
+/* Animation Utilities */
+.home-strike-target {
+    display: inline-block;
+    transition: all 0.5s ease;
+}
+
+.is-struck {
+    text-decoration: line-through;
+    opacity: 0.4;
+}
+
+.anim-word {
+    display: inline-block;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.anim-word.is-visible {
+    opacity: 1;
+}
+
+.anim-highlight {
+    color: var(--ghost-accent-color);
+    font-weight: bold;
+    margin: 0 0.3rem;
+}
+
+.anim-fade {
+    opacity: 0.6;
+    font-weight: normal;
+    color: inherit;
+}
